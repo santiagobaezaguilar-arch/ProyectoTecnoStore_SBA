@@ -4,20 +4,17 @@ import dao.impl.GamaDaoImpl;
 import model.Gama;
 import view.GamaView;
 import view.validarNumeros.Validaciones;
-import java.util.List;
-import java.util.Scanner;
 
 public class GamaController {
 
-    private final Validaciones val = new Validaciones();
+    private final Validaciones valNum = new Validaciones();
+    private final view.validarTexto.Validaciones valTexto = new view.validarTexto.Validaciones();
     private final GamaDaoImpl gamaDao = new GamaDaoImpl();
     private final GamaView gamaView = new GamaView();
-    private final Scanner scanner = new Scanner(System.in);
 
     public void crearGama() {
         System.out.println("\n--- CREAR NUEVA GAMA ---");
-        System.out.print("Ingrese el nombre de la gama: ");
-        String nombre = scanner.nextLine();
+        String nombre = valTexto.validarTextoNoVacio("Ingrese el nombre de la gama: ");
         gamaDao.crear(new Gama(nombre));
     }
 
@@ -25,12 +22,12 @@ public class GamaController {
         System.out.println("\n--- ACTUALIZAR GAMA ---");
         gamaView.mostrarLista(gamaDao.obtenerGamas());
         
-        int id = val.validarEntero("Ingrese el ID de la gama a actualizar: ");
+        int id = valNum.validarEntero("Ingrese el ID de la gama a actualizar: ");
         Gama gama = gamaDao.buscar(id);
 
         if (gama != null) {
-            System.out.print("Ingrese el nuevo nombre: ");
-            gama.setNombre(scanner.nextLine());
+            String nuevoNombre = valTexto.validarTextoNoVacio("Ingrese el nuevo nombre: ");
+            gama.setNombre(nuevoNombre);
             gamaDao.actualizar(gama);
         } else {
             System.out.println("Gama no encontrada.");
@@ -40,12 +37,11 @@ public class GamaController {
     public void eliminarGama() {
         System.out.println("\n--- ELIMINAR GAMA ---");
         gamaView.mostrarLista(gamaDao.obtenerGamas());
-        int id = val.validarEntero("Ingrese el ID de la gama a eliminar: ");
+        int id = valNum.validarEntero("Ingrese el ID de la gama a eliminar: ");
         gamaDao.eliminar(id);
     }
 
     public void listarGamas() {
-        List<Gama> lista = gamaDao.obtenerGamas();
-        gamaView.mostrarLista(lista);
+        gamaView.mostrarLista(gamaDao.obtenerGamas());
     }
 }

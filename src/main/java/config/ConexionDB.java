@@ -26,5 +26,5 @@ public class ConexionDB {
         return conexion;
     }
 
-//
+//"C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA"
 }

@@ -10,73 +10,63 @@ import model.Marca;
 import model.SistemOp;
 import view.CelularView;
 import view.validarNumeros.Validaciones;
-import java.util.Scanner;
 
 public class CelularController {
 
-    private final Validaciones val = new Validaciones();
+    private final Validaciones valNum = new Validaciones();
+    private final view.validarTexto.Validaciones valTexto = new view.validarTexto.Validaciones();
     private final CelularDaoImpl celularDao = new CelularDaoImpl();
     private final CelularView celularView = new CelularView();
     
-    // Instanciamos los DAOs de los catálogos para mostrar los IDs disponibles
     private final MarcaDaoImpl marcaDao = new MarcaDaoImpl();
     private final GamaDaoImpl gamaDao = new GamaDaoImpl();
     private final SistemaOpDaoImpl sistemaOpDao = new SistemaOpDaoImpl();
-    
-    private final Scanner scanner = new Scanner(System.in);
 
     public void crearCelular() {
         System.out.println("\n--- REGISTRAR NUEVO CELULAR ---");
         
-        System.out.print("Ingrese el modelo del celular: ");
-        String modelo = scanner.nextLine();
+        String modelo = valTexto.validarTextoNoVacio("Ingrese el modelo del celular: ");
 
-        // 1. Mostrar marcas y pedir ID
         System.out.println("\n--- MARCAS DISPONIBLES ---");
         for (Marca m : marcaDao.obtenerMarcas()) {
             System.out.println(m);
         }
-        int idMarca = val.validarEntero("Ingrese el ID de la marca: ");
+        int idMarca = valNum.validarEntero("Ingrese el ID de la marca: ");
 
-        // 2. Mostrar sistemas operativos y pedir ID
         System.out.println("\n--- SISTEMAS OPERATIVOS DISPONIBLES ---");
         for (SistemOp so : sistemaOpDao.obtenerSistemasOp()) {
             System.out.println(so);
         }
-        int idSo = val.validarEntero("Ingrese el ID del sistema operativo: ");
+        int idSo = valNum.validarEntero("Ingrese el ID del sistema operativo: ");
 
-        // 3. Mostrar gamas y pedir ID
         System.out.println("\n--- GAMAS DISPONIBLES ---");
         for (Gama g : gamaDao.obtenerGamas()) {
             System.out.println(g);
         }
-        int idGama = val.validarEntero("Ingrese el ID de la gama: ");
+        int idGama = valNum.validarEntero("Ingrese el ID de la gama: ");
 
-        // 4. Pedir precio y stock usando validaciones de números
-        double precio = val.validarDecimal("Ingrese el precio del celular: ");
-        int stock = val.validarEntero("Ingrese el stock disponible: ");
+        double precio = valNum.validarDecimal("Ingrese el precio del celular: ");
+        int stock = valNum.validarEntero("Ingrese el stock disponible: ");
 
-        Celular nuevoCelular = new Celular(modelo, idMarca, idSo, idGama, precio, stock);
-        celularDao.crear(nuevoCelular);
+        celularDao.crear(new Celular(modelo, idMarca, idSo, idGama, precio, stock));
     }
 
     public void listarCelulares() {
         celularView.mostrarLista(celularDao.obtenerCelulares());
     }
-    
+
     public void eliminarCelular() {
         System.out.println("\n--- ELIMINAR CELULAR ---");
         listarCelulares();
-        
-        int id = val.validarEntero("Ingrese el ID del celular que desea eliminar: ");
+        int id = valNum.validarEntero("Ingrese el ID del celular que desea eliminar: ");
         celularDao.eliminar(id);
     }
-    
+
     public void actualizarCelular() {
         System.out.println("\n--- ACTUALIZAR CELULAR ---");
-        celularView.mostrarLista(celularDao.obtenerCelulares());
+        listarCelulares();
         
-        int id = val.validarEntero("Ingrese el ID del celular que desea actualizar: ");
+        int id = valNum.validarEntero("Ingrese el ID del celular que desea actualizar: ");
         Celular celular = celularDao.buscar(id);
 
         if (celular == null) {
@@ -86,7 +76,7 @@ public class CelularController {
 
         int opcionActualizacion;
         do {
-            opcionActualizacion = val.validarEntero("""
+            opcionActualizacion = valNum.validarEntero("""
                                                     
                                                     --- SUBMENÚ: ¿QUÉ DESEA ACTUALIZAR? ---
                                                     1. Modelo
@@ -99,8 +89,8 @@ public class CelularController {
                                                     Seleccione una opción: """);
             switch (opcionActualizacion) {
                 case 1 -> {
-                    System.out.print("Ingrese el nuevo modelo: ");
-                    celular.setModelo(scanner.nextLine());
+                    String nuevoModelo = valTexto.validarTextoNoVacio("Ingrese el nuevo modelo: ");
+                    celular.setModelo(nuevoModelo);
                     celularDao.actualizar(celular);
                 }
                 case 2 -> {
@@ -108,8 +98,7 @@ public class CelularController {
                     for (Marca m : marcaDao.obtenerMarcas()) {
                         System.out.println(m);
                     }
-                    int nuevoIdMarca = val.validarEntero("Ingrese el nuevo ID de la marca: ");
-                    celular.setIdMarca(nuevoIdMarca);
+                    celular.setIdMarca(valNum.validarEntero("Ingrese el nuevo ID de la marca: "));
                     celularDao.actualizar(celular);
                 }
                 case 3 -> {
@@ -117,8 +106,7 @@ public class CelularController {
                     for (SistemOp so : sistemaOpDao.obtenerSistemasOp()) {
                         System.out.println(so);
                     }
-                    int nuevoIdSo = val.validarEntero("Ingrese el nuevo ID del sistema operativo: ");
-                    celular.setIdSistemaOperativo(nuevoIdSo);
+                    celular.setIdSistemaOperativo(valNum.validarEntero("Ingrese el nuevo ID del sistema operativo: "));
                     celularDao.actualizar(celular);
                 }
                 case 4 -> {
@@ -126,18 +114,15 @@ public class CelularController {
                     for (Gama g : gamaDao.obtenerGamas()) {
                         System.out.println(g);
                     }
-                    int nuevoIdGama = val.validarEntero("Ingrese el nuevo ID de la gama: ");
-                    celular.setIdGama(nuevoIdGama);
+                    celular.setIdGama(valNum.validarEntero("Ingrese el nuevo ID de la gama: "));
                     celularDao.actualizar(celular);
                 }
                 case 5 -> {
-                    double nuevoPrecio = val.validarDecimal("Ingrese el nuevo precio: ");
-                    celular.setPrecio(nuevoPrecio);
+                    celular.setPrecio(valNum.validarDecimal("Ingrese el nuevo precio: "));
                     celularDao.actualizar(celular);
                 }
                 case 6 -> {
-                    int nuevoStock = val.validarEntero("Ingrese el nuevo stock: ");
-                    celular.setStock(nuevoStock);
+                    celular.setStock(valNum.validarEntero("Ingrese el nuevo stock: "));
                     celularDao.actualizar(celular);
                 }
                 case 7 -> System.out.println("Regresando al menú de celulares...");
@@ -145,5 +130,4 @@ public class CelularController {
             }
         } while (opcionActualizacion != 7);
     }
-    
 }

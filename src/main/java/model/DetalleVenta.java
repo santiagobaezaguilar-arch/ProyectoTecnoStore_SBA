@@ -1,13 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-/**
- *
- * @author HP
- */
 public class DetalleVenta {
-    
+    private int id;
+    private int idVenta;
+    private int idCelular;
+    private int cantidad;
+    private double subtotal;
+
+    public DetalleVenta() {}
+
+    public DetalleVenta(int idVenta, int idCelular, int cantidad, double subtotal) {
+        this.idVenta = idVenta;
+        this.idCelular = idCelular;
+        this.cantidad = cantidad;
+        this.subtotal = subtotal;
+    }
+
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+
+    public int getIdVenta() { return idVenta; }
+    public void setIdVenta(int idVenta) { this.idVenta = idVenta; }
+
+    public int getIdCelular() { return idCelular; }
+    public void setIdCelular(int idCelular) { this.idCelular = idCelular; }
+
+    public int getCantidad() { return cantidad; }
+    public void setCantidad(int cantidad) { this.cantidad = cantidad; }
+
+    public double getSubtotal() { return subtotal; }
+    public void setSubtotal(double subtotal) { this.subtotal = subtotal; }
 }

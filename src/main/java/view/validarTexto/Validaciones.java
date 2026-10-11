@@ -1,28 +1,19 @@
-
 package view.validarTexto;
 
 import java.util.Scanner;
 
 public class Validaciones {
-     public String validarTexto(String mensaje) {
-        boolean validacion;
-        String texto = "";
-        Scanner x = new Scanner(System.in);
-        int contador = 0;
+
+    public String validarTextoNoVacio(String mensaje) {
+        Scanner scanner = new Scanner(System.in);
+        String texto;
         do {
-            validacion = true;
-            System.out.println(mensaje);
-            texto = x.nextLine();
-            for (int i = 0; i < texto.length(); i++) {
-                contador += texto.charAt(i) == ' ' ? 1 : 0;
-                if (!Character.isLetter(texto.charAt(i)) || texto.charAt(i) != ' ') {
-                    if (texto.charAt(i) == ' ' && i == 0) {
-                        validacion = false;
-                        break;
-                    }
-                }
+            System.out.print(mensaje);
+            texto = scanner.nextLine().trim(); // Elimina espacios sobrantes al inicio y final
+            if (texto.isEmpty()) {
+                System.out.println("¡Error! Este campo no puede estar vacío. Intente de nuevo.");
             }
-        } while (validacion == false);
+        } while (texto.isEmpty());
         return texto;
     }
 }

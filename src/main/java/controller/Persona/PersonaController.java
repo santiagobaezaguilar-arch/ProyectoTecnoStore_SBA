@@ -4,42 +4,33 @@ import dao.impl.PersonaDaoImpl;
 import model.Persona;
 import view.PersonaView;
 import view.validarNumeros.Validaciones;
-import java.util.List;
-import java.util.Scanner;
 
 public class PersonaController {
 
-    private final Validaciones val = new Validaciones();
+    private final Validaciones valNum = new Validaciones();
+    private final view.validarTexto.Validaciones valTexto = new view.validarTexto.Validaciones();
     private final PersonaDaoImpl personaDao = new PersonaDaoImpl();
     private final PersonaView personaView = new PersonaView();
-    private final Scanner scanner = new Scanner(System.in);
 
     public void crearPersona() {
         System.out.println("\n--- REGISTRAR NUEVA PERSONA ---");
-        System.out.print("Ingrese el nombre: ");
-        String nombre = scanner.nextLine();
-        System.out.print("Ingrese la identificación: ");
-        String identificacion = scanner.nextLine();
-        System.out.print("Ingrese el correo: ");
-        String correo = scanner.nextLine();
-        System.out.print("Ingrese la contraseña: ");
-        String contraseña = scanner.nextLine();
-        System.out.print("Ingrese el teléfono: ");
-        String telefono = scanner.nextLine();
+        String nombre = valTexto.validarTextoNoVacio("Ingrese el nombre: ");
+        String identificacion = valTexto.validarTextoNoVacio("Ingrese la identificación: ");
+        String correo = valTexto.validarTextoNoVacio("Ingrese el correo: ");
+        String contraseña = valTexto.validarTextoNoVacio("Ingrese la contraseña: ");
+        String telefono = valTexto.validarTextoNoVacio("Ingrese el teléfono: ");
 
-        Persona nuevaPersona = new Persona(nombre, identificacion, correo, contraseña, telefono);
-        personaDao.crear(nuevaPersona);
+        personaDao.crear(new Persona(nombre, identificacion, correo, contraseña, telefono));
     }
 
     public void listarPersonas() {
-        List<Persona> lista = personaDao.obtenerPersonas();
-        personaView.mostrarLista(lista);
+        personaView.mostrarLista(personaDao.obtenerPersonas());
     }
 
     public void eliminarPersona() {
         System.out.println("\n--- ELIMINAR PERSONA ---");
         listarPersonas();
-        int id = val.validarEntero("Ingrese el ID de la persona que desea eliminar: ");
+        int id = valNum.validarEntero("Ingrese el ID de la persona que desea eliminar: ");
         personaDao.eliminar(id);
     }
 
@@ -47,7 +38,7 @@ public class PersonaController {
         System.out.println("\n--- ACTUALIZAR PERSONA ---");
         listarPersonas();
         
-        int id = val.validarEntero("Ingrese el ID de la persona que desea actualizar: ");
+        int id = valNum.validarEntero("Ingrese el ID de la persona que desea actualizar: ");
         Persona persona = personaDao.buscar(id);
 
         if (persona == null) {
@@ -57,7 +48,7 @@ public class PersonaController {
 
         int opcionActualizacion;
         do {
-            opcionActualizacion = val.validarEntero("""
+            opcionActualizacion = valNum.validarEntero("""
                                                     
                                                     --- SUBMENÚ: ¿QUÉ DESEA ACTUALIZAR? ---
                                                     1. Nombre
@@ -69,28 +60,23 @@ public class PersonaController {
                                                     Seleccione una opción: """);
             switch (opcionActualizacion) {
                 case 1 -> {
-                    System.out.print("Ingrese el nuevo nombre: ");
-                    persona.setNombre(scanner.nextLine());
+                    persona.setNombre(valTexto.validarTextoNoVacio("Ingrese el nuevo nombre: "));
                     personaDao.actualizar(persona);
                 }
                 case 2 -> {
-                    System.out.print("Ingrese la nueva identificación: ");
-                    persona.setIdentificacion(scanner.nextLine());
+                    persona.setIdentificacion(valTexto.validarTextoNoVacio("Ingrese la nueva identificación: "));
                     personaDao.actualizar(persona);
                 }
                 case 3 -> {
-                    System.out.print("Ingrese el nuevo correo: ");
-                    persona.setCorreo(scanner.nextLine());
+                    persona.setCorreo(valTexto.validarTextoNoVacio("Ingrese el nuevo correo: "));
                     personaDao.actualizar(persona);
                 }
                 case 4 -> {
-                    System.out.print("Ingrese la nueva contraseña: ");
-                    persona.setContraseña(scanner.nextLine());
+                    persona.setContraseña(valTexto.validarTextoNoVacio("Ingrese la nueva contraseña: "));
                     personaDao.actualizar(persona);
                 }
                 case 5 -> {
-                    System.out.print("Ingrese el nuevo teléfono: ");
-                    persona.setTelefono(scanner.nextLine());
+                    persona.setTelefono(valTexto.validarTextoNoVacio("Ingrese el nuevo teléfono: "));
                     personaDao.actualizar(persona);
                 }
                 case 6 -> System.out.println("Regresando al menú de personas...");

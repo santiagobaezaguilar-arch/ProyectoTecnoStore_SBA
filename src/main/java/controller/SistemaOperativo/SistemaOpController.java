@@ -4,20 +4,17 @@ import dao.impl.SistemaOpDaoImpl;
 import model.SistemOp;
 import view.SistemaOpView;
 import view.validarNumeros.Validaciones;
-import java.util.List;
-import java.util.Scanner;
 
 public class SistemaOpController {
 
-    private final Validaciones val = new Validaciones();
+    private final Validaciones valNum = new Validaciones();
+    private final view.validarTexto.Validaciones valTexto = new view.validarTexto.Validaciones();
     private final SistemaOpDaoImpl sistemaOpDao = new SistemaOpDaoImpl();
     private final SistemaOpView sistemaOpView = new SistemaOpView();
-    private final Scanner scanner = new Scanner(System.in);
 
     public void crearSistemaOp() {
         System.out.println("\n--- CREAR NUEVO SISTEMA OPERATIVO ---");
-        System.out.print("Ingrese el nombre del sistema operativo: ");
-        String nombre = scanner.nextLine();
+        String nombre = valTexto.validarTextoNoVacio("Ingrese el nombre del sistema operativo: ");
         sistemaOpDao.crear(new SistemOp(nombre));
     }
 
@@ -25,12 +22,12 @@ public class SistemaOpController {
         System.out.println("\n--- ACTUALIZAR SISTEMA OPERATIVO ---");
         sistemaOpView.mostrarLista(sistemaOpDao.obtenerSistemasOp());
         
-        int id = val.validarEntero("Ingrese el ID del sistema operativo a actualizar: ");
+        int id = valNum.validarEntero("Ingrese el ID del sistema operativo a actualizar: ");
         SistemOp so = sistemaOpDao.buscar(id);
 
         if (so != null) {
-            System.out.print("Ingrese el nuevo nombre: ");
-            so.setNombre(scanner.nextLine());
+            String nuevoNombre = valTexto.validarTextoNoVacio("Ingrese el nuevo nombre: ");
+            so.setNombre(nuevoNombre);
             sistemaOpDao.actualizar(so);
         } else {
             System.out.println("Sistema operativo no encontrado.");
@@ -40,12 +37,11 @@ public class SistemaOpController {
     public void eliminarSistemaOp() {
         System.out.println("\n--- ELIMINAR SISTEMA OPERATIVO ---");
         sistemaOpView.mostrarLista(sistemaOpDao.obtenerSistemasOp());
-        int id = val.validarEntero("Ingrese el ID del sistema operativo a eliminar: ");
+        int id = valNum.validarEntero("Ingrese el ID del sistema operativo a eliminar: ");
         sistemaOpDao.eliminar(id);
     }
 
     public void listarSistemasOp() {
-        List<SistemOp> lista = sistemaOpDao.obtenerSistemasOp();
-        sistemaOpView.mostrarLista(lista);
+        sistemaOpView.mostrarLista(sistemaOpDao.obtenerSistemasOp());
     }
 }
