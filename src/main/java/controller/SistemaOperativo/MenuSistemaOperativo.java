@@ -5,6 +5,7 @@ import view.validarNumeros.Validaciones;
 public class MenuSistemaOperativo {
 
     private final Validaciones val = new Validaciones();
+    private final SistemaOpController sistemaOpController = new SistemaOpController();
 
     public void mostrarMenu() {
         int opcion;
@@ -19,10 +20,10 @@ public class MenuSistemaOperativo {
                                       5. Regresar
                                       Seleccione una opción: """);
             switch (opcion) {
-                case 1 -> System.out.println("[Función] Crear Sistema Operativo en desarrollo...");
-                case 2 -> System.out.println("[Función] Actualizar Sistema Operativo en desarrollo...");
-                case 3 -> System.out.println("[Función] Eliminar Sistema Operativo en desarrollo...");
-                case 4 -> System.out.println("[Listado de Sistemas Operativos - Próximamente]");
+                case 1 -> sistemaOpController.crearSistemaOp();
+                case 2 -> sistemaOpController.actualizarSistemaOp();
+                case 3 -> sistemaOpController.eliminarSistemaOp();
+                case 4 -> sistemaOpController.listarSistemasOp();
                 case 5 -> System.out.println("Regresando al menú anterior...");
                 default -> System.out.println("Opción no válida.");
             }

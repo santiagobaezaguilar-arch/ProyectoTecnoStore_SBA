@@ -1,6 +1,5 @@
 package controller;
 
-import controller.Celular.MenuCelularPrincipal;
 import controller.Persona.MenuUsuario;
 import view.validarNumeros.Validaciones;
 
@@ -17,7 +16,7 @@ public class MenuPrincipal {
                                               TIENDA TECNOSTORE
                                       ===================================
                                       1. Usuario
-                                      2. Celular
+                                      2. Mas Opciones
                                       3. Salir
                                       Seleccione una opcion: """);// q significa el bro respeta
                                      
@@ -27,7 +26,7 @@ public class MenuPrincipal {
                     menuUsuario.mostrarMenuUsuario();
                 }
                 case 2 -> {
-                    MenuCelularPrincipal menuCelular = new MenuCelularPrincipal();
+                    MenuSecundario menuCelular = new MenuSecundario();
                     menuCelular.mostrarMenuCelularPrincipal();
                 }
                 case 3 -> System.out.println("Saliendo del sistema. ¡Hasta pronto!");

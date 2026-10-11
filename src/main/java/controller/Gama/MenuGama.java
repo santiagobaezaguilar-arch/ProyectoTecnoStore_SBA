@@ -5,6 +5,7 @@ import view.validarNumeros.Validaciones;
 public class MenuGama {
 
     private final Validaciones val = new Validaciones();
+    private final GamaController gamaController = new GamaController();
 
     public void mostrarMenu() {
         int opcion;
@@ -19,10 +20,10 @@ public class MenuGama {
                                       5. Regresar
                                       Seleccione una opción: """);
             switch (opcion) {
-                case 1 -> System.out.println("[Función] Crear Gama en desarrollo...");
-                case 2 -> System.out.println("[Función] Actualizar Gama en desarrollo...");
-                case 3 -> System.out.println("[Función] Eliminar Gama en desarrollo...");
-                case 4 -> System.out.println("[Listado de Gamas - Próximamente]");
+                case 1 -> gamaController.crearGama();
+                case 2 -> gamaController.actualizarGama();
+                case 3 -> gamaController.eliminarGama();
+                case 4 -> gamaController.listarGamas();
                 case 5 -> System.out.println("Regresando al menú anterior...");
                 default -> System.out.println("Opción no válida.");
             }

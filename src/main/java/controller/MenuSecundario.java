@@ -1,11 +1,12 @@
-package controller.Celular;
+package controller;
 
 import controller.Gama.MenuGama;
 import controller.Marca.MenuMarca;
 import controller.SistemaOperativo.MenuSistemaOperativo;
+import controller.celular.MenuCelular;
 import view.validarNumeros.Validaciones;
 
-public class MenuCelularPrincipal {
+public class MenuSecundario {
 
     private final Validaciones val = new Validaciones();
 
@@ -22,7 +23,10 @@ public class MenuCelularPrincipal {
                                       5. Regresar al menú principal
                                       Seleccione una opción: """);
             switch (opcion) {
-                case 1 -> System.out.println("[Módulo] Gestión de Celulares (Próximamente)");
+                case 1 -> {
+                MenuCelular menuCelular = new MenuCelular();
+                menuCelular.mostrarMenu ();
+                }
                 case 2 -> {
                     MenuMarca menuMarca = new MenuMarca();
                     menuMarca.mostrarMenu();

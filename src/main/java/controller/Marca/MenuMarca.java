@@ -1,14 +1,11 @@
 package controller.Marca;
 
-import dao.impl.MarcaDaoImpl;
-import model.Marca;
 import view.validarNumeros.Validaciones;
-import java.util.List;
 
 public class MenuMarca {
 
     private final Validaciones val = new Validaciones();
-    private final MarcaDaoImpl marcaDao = new MarcaDaoImpl();
+    private final MarcaController marcaController = new MarcaController();
 
     public void mostrarMenu() {
         int opcion;
@@ -23,22 +20,10 @@ public class MenuMarca {
                                       5. Regresar
                                       Seleccione una opción: """);
             switch (opcion) {
-                case 1 -> System.out.println("[Función] Crear marca en desarrollo...");
-                case 2 -> System.out.println("[Función] Actualizar marca en desarrollo...");
-                case 3 -> System.out.println("[Función] Eliminar marca en desarrollo...");
-                case 4 -> {
-                    List<Marca> lista = marcaDao.obtenerMarcas();
-                    System.out.println("\n==================================");
-                    System.out.println("       LISTADO DE MARCAS          ");
-                    System.out.println("==================================");
-                    if (lista.isEmpty()) {
-                        System.out.println("No hay marcas registradas en la BD.");
-                    } else {
-                        for (Marca m : lista) {
-                            System.out.println(m);
-                        }
-                    }
-                }
+                case 1 -> marcaController.crearMarca();
+                case 2 -> marcaController.actualizarMarca();
+                case 3 -> marcaController.eliminarMarca();
+                case 4 -> marcaController.listarMarcas();
                 case 5 -> System.out.println("Regresando al menú anterior...");
                 default -> System.out.println("Opción no válida.");
             }

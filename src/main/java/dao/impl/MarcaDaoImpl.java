@@ -1,13 +1,15 @@
 package dao.impl;
 
 import config.ConexionDB;
+import dao.MarcaDao;
 import model.Marca;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MarcaDaoImpl {
+public class MarcaDaoImpl implements MarcaDao {
 
+    @Override
     public void crear(Marca marca) {
         String sql = "INSERT INTO marca (nombre) VALUES (?)";
         try (Connection con = ConexionDB.getConexion();
@@ -20,6 +22,7 @@ public class MarcaDaoImpl {
         }
     }
 
+    @Override
     public void actualizar(Marca marca) {
         String sql = "UPDATE marca SET nombre = ? WHERE id = ?";
         try (Connection con = ConexionDB.getConexion();
@@ -33,6 +36,7 @@ public class MarcaDaoImpl {
         }
     }
 
+    @Override
     public void eliminar(int id) {
         String sql = "DELETE FROM marca WHERE id = ?";
         try (Connection con = ConexionDB.getConexion();
@@ -49,6 +53,7 @@ public class MarcaDaoImpl {
         }
     }
 
+    @Override
     public Marca buscar(int id) {
         String sql = "SELECT * FROM marca WHERE id = ?";
         try (Connection con = ConexionDB.getConexion();
@@ -68,6 +73,7 @@ public class MarcaDaoImpl {
         return null;
     }
 
+    @Override
     public List<Marca> obtenerMarcas() {
         List<Marca> lista = new ArrayList<>();
         String sql = "SELECT * FROM marca";
