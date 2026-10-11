@@ -1,9 +1,9 @@
 model\Marca.class
 controller\Celular\CelularController.class
+controller\Persona\MenuPersona.class
 dao\impl\VentaDaoImpl.class
 model\Persona.class
 model\Venta.class
-controller\Persona\MenuUsuario.class
 dao\impl\SistemaOpDaoImpl.class
 view\GamaView.class
 view\validarNumeros\Validaciones.class
@@ -20,6 +20,7 @@ view\VentaView.class
 dao\VendedorDao.class
 config\ConexionDB.class
 controller\Persona\PersonaController.class
+dao\impl\PersonaDaoImpl.class
 model\DetalleVenta.class
 controller\SistemaOperativo\MenuSistemaOperativo.class
 dao\CelularDao.class
@@ -38,7 +39,7 @@ proyectotecnostore_sba\ProyectoTecnoStore_SBA.class
 dao\impl\CelularDaoImpl.class
 dao\impl\VendedorDaoImpl.class
 controller\MenuPrincipal.class
-dao\impl\personaDaoImpl.class
+view\PersonaView.class
 view\CelularView.class
 controller\Marca\MenuMarca.class
 dao\VentaDao.class

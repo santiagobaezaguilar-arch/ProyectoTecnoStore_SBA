@@ -1,6 +1,6 @@
 package controller;
 
-import controller.Persona.MenuUsuario;
+import controller.Persona.MenuPersona;
 import view.validarNumeros.Validaciones;
 
 public class MenuPrincipal {
@@ -22,8 +22,8 @@ public class MenuPrincipal {
                                      
             switch (opcion) {
                 case 1 -> {
-                    MenuUsuario menuUsuario = new MenuUsuario();
-                    menuUsuario.mostrarMenuUsuario();
+                    MenuPersona menuUsuario = new MenuPersona();
+                    menuUsuario.mostrarMenu();
                 }
                 case 2 -> {
                     MenuSecundario menuCelular = new MenuSecundario();
