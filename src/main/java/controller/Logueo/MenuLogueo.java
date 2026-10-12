@@ -14,20 +14,19 @@ public class MenuLogueo {
             opcion = valNum.validarEntero("""
                                           
                                           === SISTEMA TECNOSTORE ===
-                                          1. Iniciar Sesión (Vendedor)
+                                          1. Iniciar Sesion
                                           2. Salir
-                                          Seleccione una opción: """);
+                                          Seleccione una opcion: """);
             switch (opcion) {
                 case 1 -> {
                     int idVendedor = logueoController.iniciarSesion();
                     if (idVendedor != -1) {
-                        // Pasar al menú de inicio con el ID del vendedor autenticado
                         MenuInicio menuInicio = new MenuInicio(idVendedor);
                         menuInicio.mostrarMenu();
                     }
                 }
                 case 2 -> System.out.println("Saliendo del sistema...");
-                default -> System.out.println("Opción no válida.");
+                default -> System.out.println("Opcion no valida.");
             }
         } while (opcion != 2);
     }

@@ -1,13 +1,13 @@
 
 package proyectotecnostore_sba;
 
-import controller.MenuPrincipal;
+import controller.Logueo.MenuLogueo;
 
 public class ProyectoTecnoStore_SBA {
 
     public static void main(String[] args) {
-        MenuPrincipal menu = new MenuPrincipal();
-        menu.mostrarMenuPrincipal();
+        MenuLogueo menu = new MenuLogueo();
+        menu.mostrarMenu();
     }
     
 }

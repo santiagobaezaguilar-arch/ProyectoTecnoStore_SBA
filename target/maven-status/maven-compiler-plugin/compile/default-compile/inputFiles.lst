@@ -3,6 +3,9 @@ C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\cont
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\controller\Celular\MenuCelular.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\controller\Gama\GamaController.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\controller\Gama\MenuGama.java
+C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\controller\Inicio\MenuInicio.java
+C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\controller\Logueo\LogueoController.java
+C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\controller\Logueo\MenuLogueo.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\controller\Marca\MarcaController.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\controller\Marca\MenuMarca.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\controller\MenuPrincipal.java
@@ -11,7 +14,8 @@ C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\cont
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\controller\Persona\PersonaController.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\controller\SistemaOperativo\MenuSistemaOperativo.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\controller\SistemaOperativo\SistemaOpController.java
-C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\controller\VentaController.java
+C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\controller\Venta\MenuVenta.java
+C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\controller\Venta\VentaController.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\dao\CelularDao.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\dao\GamaDao.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\dao\impl\CelularDaoImpl.java

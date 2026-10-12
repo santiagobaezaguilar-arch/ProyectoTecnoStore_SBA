@@ -22,7 +22,7 @@ public class VentaView {
         
         System.out.println("--------------------------------------------------");
         System.out.println(String.format("Subtotal:     $%.2f", subtotal));
-        System.out.println(String.format("IVA (19%):    $%.2f", iva));
+        System.out.println(String.format("IVA (19%%):    $%.2f", iva));
         System.out.println(String.format("TOTAL A PAGAR: $%.2f", total));
         System.out.println("==================================================");
     }
