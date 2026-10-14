@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Aca arrancamos la clase PersonaDaoImpl, la encargada de implementar el DAO pa manejar todas las operaciones CRUD de los clientes y personas en MySQL, bien pro pa q amarre :V xd
-public class ERROR implements PersonaDao {
+public class PersonaDaoImpl implements PersonaDao {
 
     // Aca sobreescribimos el metodo crear pa insertar un nuevo usuario en la base de datos usando un PreparedStatement, gg ez
     @Override

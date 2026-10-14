@@ -2,7 +2,7 @@ package controller.Venta;
 
 import config.ConexionDB;
 import dao.impl.CelularDaoImpl;
-import dao.impl.ERROR;
+import dao.impl.PersonaDaoImpl;
 import dao.impl.VentaDaoImpl;
 import model.Celular;
 import model.DetalleVenta;
@@ -32,7 +32,7 @@ public class VentaController {
     // Aca ponemos el validador de texto pa asegurar que los datos no queden con babosadas vacias, eso tilin
     private final view.validarTexto.Validaciones valTexto = new view.validarTexto.Validaciones();
     // Aca instanciamos el DAO de personas pa buscar y registrar clientes en MySQL, gg ez
-    private final ERROR personaDao = new ERROR();
+    private final PersonaDaoImpl personaDao = new PersonaDaoImpl();
     // Aca traemos el DAO de celulares pa consultar el stock y los telefonos disponibles, piolin
     private final CelularDaoImpl celularDao = new CelularDaoImpl();
     // Aca ponemos el DAO de ventas pa registrar la factura completa y los detalles en la base de datos, wazaa

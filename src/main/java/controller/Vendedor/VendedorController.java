@@ -1,6 +1,6 @@
 package controller.Vendedor;
 
-import dao.impl.ERROR;
+import dao.impl.PersonaDaoImpl;
 import dao.impl.VendedorDaoImpl;
 import model.Persona;
 import model.Vendedor;
@@ -17,7 +17,7 @@ public class VendedorController {
     // Aca instanciamos el DAO de vendedores pa hacer los INSERT, UPDATE y DELETE directos en MySQL, gg ez
     private final VendedorDaoImpl vendedorDao = new VendedorDaoImpl();
     // Aca traemos el DAO de personas pa consultar los usuarios registrados que pueden ser vendedores, wazaa
-    private final ERROR personaDao = new ERROR();
+    private final PersonaDaoImpl personaDao = new PersonaDaoImpl();
     // Aca armamos la vista de vendedores pa pintar las listas en la consola, piolin
     private final VendedorView vendedorView = new VendedorView();
 

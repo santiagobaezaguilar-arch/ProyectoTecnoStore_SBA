@@ -1,6 +1,6 @@
 package controller.Persona;
 
-import dao.impl.ERROR;
+import dao.impl.PersonaDaoImpl;
 import model.Persona;
 import view.PersonaView;
 import view.validarNumeros.Validaciones;
@@ -13,7 +13,7 @@ public class PersonaController {
     // Aca ponemos el validador de texto pa asegurar que los campos no queden con babosadas vacias, eso tilin
     private final view.validarTexto.Validaciones valTexto = new view.validarTexto.Validaciones();
     // Aca instanciamos el DAO de personas pa hacer los INSERT, UPDATE y DELETE directos en MySQL, gg ez
-    private final ERROR personaDao = new ERROR();
+    private final PersonaDaoImpl personaDao = new PersonaDaoImpl();
     // Aca armamos la vista de personas pa pintar las listas de usuarios en la consola, piolin
     private final PersonaView personaView = new PersonaView();
 
