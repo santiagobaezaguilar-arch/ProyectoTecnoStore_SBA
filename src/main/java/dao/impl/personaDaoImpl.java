@@ -57,7 +57,12 @@ public class PersonaDaoImpl implements PersonaDao {
                 System.out.println("No se encontró ninguna persona con ese ID.");
             }
         } catch (SQLException e) {
-            System.out.println("Error al eliminar persona (puede tener ventas o un vendedor asociado): " + e.getMessage());
+            // Detecta si es un error de restricción de llave foránea (integridad referencial)
+            if (e.getSQLState().startsWith("23") || e.getErrorCode() == 1451) {
+                System.out.println("No se puede eliminar esta persona porque tiene ventas registradas o un rol de vendedor asociado.");
+            } else {
+                System.out.println("Ocurrió un error al intentar eliminar el registro.");
+            }
         }
     }
 

@@ -1,13 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package view;
 
-/**
- *
- * @author HP
- */
+import model.AccionLog;
+import java.util.List;
+
 public class ReporteView {
-    
+    public void mostrarHistorialAuditoria(List<AccionLog> historial) {
+        System.out.println("\n--- REPORTE DE AUDITORÍA HISTORIAL (.DAT) ---");
+        if (historial.isEmpty()) {
+            System.out.println("No hay registros en el archivo binario.");
+        } else {
+            historial.forEach(System.out::println);
+        }
+        System.out.println("---------------------------------------------");
+    }
 }

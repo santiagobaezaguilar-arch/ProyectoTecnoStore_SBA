@@ -4,6 +4,7 @@ import model.DetalleVenta;
 import model.Venta;
 import java.util.List;
 
-public class VentaDao {
-    // La transacción completa se maneja en el Impl
+public interface VentaDao {
+    boolean registrarVentaCompleta(Venta venta, List<DetalleVenta> detalles);
+    List<Venta> obtenerTodasLasVentas();
 }

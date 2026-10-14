@@ -12,8 +12,11 @@ C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\cont
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\controller\MenuSecundario.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\controller\Persona\MenuPersona.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\controller\Persona\PersonaController.java
+C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\controller\Reporte\ReporteController.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\controller\SistemaOperativo\MenuSistemaOperativo.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\controller\SistemaOperativo\SistemaOpController.java
+C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\controller\Vendedor\MenuVendedor.java
+C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\controller\Vendedor\VendedorController.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\controller\Venta\MenuVenta.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\controller\Venta\VentaController.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\dao\CelularDao.java
@@ -30,7 +33,10 @@ C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\dao\
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\dao\SistemaOpDao.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\dao\VendedorDao.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\dao\VentaDao.java
+C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\model\AccionLog.java
+C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\model\AuditoriaArchivo.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\model\Celular.java
+C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\model\DatosVentaArchivo.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\model\DetalleVenta.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\model\Gama.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\model\Marca.java
@@ -38,6 +44,7 @@ C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\mode
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\model\SistemOp.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\model\Vendedor.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\model\Venta.java
+C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\model\VentaRegistro.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\proyectotecnostore_sba\ProyectoTecnoStore_SBA.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\view\CelularView.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\view\GamaView.java
@@ -47,4 +54,5 @@ C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\view
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\view\SistemaOpView.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\view\validarNumeros\Validaciones.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\view\validarTexto\Validaciones.java
+C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\view\VendedorView.java
 C:\Users\HP\Documents\NetBeansProjects\proyectoTecnoStore_SBA\src\main\java\view\VentaView.java

@@ -16,4 +16,19 @@ public class Validaciones {
         } while (texto.isEmpty());
         return texto;
     }
+    
+    public String validarCorreo(String mensaje) {
+        Scanner scanner = new Scanner(System.in);
+        String correo;
+        do {
+            System.out.print(mensaje);
+            correo = scanner.nextLine().trim();
+            
+            if (!correo.contains("@")) {
+                System.out.println("Error: El correo debe contener '@'. Intente de nuevo.");
+            }
+        } while (!correo.contains("@"));
+        
+        return correo;
+    }  
 }

@@ -8,6 +8,9 @@ import model.Celular;
 import model.DetalleVenta;
 import model.Persona;
 import model.Venta;
+import model.DatosVentaArchivo;
+import model.VentaRegistro;
+import model.AuditoriaArchivo;
 import view.VentaView;
 import view.validarNumeros.Validaciones;
 
@@ -15,6 +18,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -29,6 +33,9 @@ public class VentaController {
     private final VentaDaoImpl ventaDao = new VentaDaoImpl();
     private final VentaView ventaView = new VentaView();
     
+    private final DatosVentaArchivo datosVentaArchivo = new DatosVentaArchivo();
+    private final AuditoriaArchivo auditoriaArchivo = new AuditoriaArchivo();
+    
     private final int idVendedor;
 
     public VentaController(int idVendedor) {
@@ -38,7 +45,7 @@ public class VentaController {
     public void iniciarProcesoVenta() {
         System.out.println("\n--- NUEVA VENTA ---");
         
-        String identificacion = valTexto.validarTextoNoVacio("Ingrese la cedula o identificacion del cliente: ");
+        String identificacion = String.valueOf(valNum.validarEnteroGrande("Ingrese la cedula o identificacion del cliente: "));
         Persona cliente = buscarClientePorIdentificacion(identificacion);
 
         if (cliente == null) {
@@ -127,6 +134,13 @@ public class VentaController {
         if (exito) {
             String vendedorNombre = obtenerNombreVendedor(this.idVendedor);
             ventaView.mostrarFactura(cliente.getNombre(), vendedorNombre, carritoResumenVista, subtotalGeneral, iva, totalGeneral);
+
+            // 1. Guardar copia en el archivo binario de ventas (.dat)
+            datosVentaArchivo.guardar(new VentaRegistro(0, cliente.getNombre(), vendedorNombre, totalGeneral, LocalDateTime.now()));
+
+            // 2. Registrar la venta en la bitácora de auditoría (.dat)
+            auditoriaArchivo.registrarAccion("Vendedor ID: " + this.idVendedor, "VENTA", 
+                    "Venta efectuada al cliente " + cliente.getNombre() + " por un total de $" + totalGeneral);
         }
     }
 
@@ -156,12 +170,15 @@ public class VentaController {
     private Persona registrarClienteNuevo(String identificacion) {
         System.out.println("\n--- REGISTRO RAPIDO DE CLIENTE ---");
         String nombre = valTexto.validarTextoNoVacio("Ingrese el nombre del cliente: ");
-        String correo = valTexto.validarTextoNoVacio("Ingrese el correo del cliente: ");
-        String telefono = valTexto.validarTextoNoVacio("Ingrese el telefono: ");
+        String correo = valTexto.validarCorreo("Ingrese el correo del cliente: ");
+        String telefono = String.valueOf(valNum.validarEnteroGrande("Ingrese el telefono: "));
         String contraseña = null; 
 
         Persona nuevoCliente = new Persona(nombre, identificacion, correo, contraseña, telefono);
         personaDao.crear(nuevoCliente);
+
+        // Registrar acción de creación de cliente en auditoría .dat
+        auditoriaArchivo.registrarAccion("Sistema", "REGISTRO_CLIENTE", "Se registró rápidamente al cliente: " + nombre);
 
         return buscarClientePorIdentificacion(identificacion);
     }

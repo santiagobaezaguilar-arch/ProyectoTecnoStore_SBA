@@ -15,10 +15,10 @@ public class PersonaController {
     public void crearPersona() {
         System.out.println("\n--- REGISTRAR NUEVA PERSONA ---");
         String nombre = valTexto.validarTextoNoVacio("Ingrese el nombre: ");
-        String identificacion = valTexto.validarTextoNoVacio("Ingrese la identificación: ");
-        String correo = valTexto.validarTextoNoVacio("Ingrese el correo: ");
+        String identificacion = String.valueOf(valNum.validarEnteroGrande("Ingrese la identificacion: "));
+        String correo = valTexto.validarCorreo("Ingrese el correo electronico: ");
         String contraseña = valTexto.validarTextoNoVacio("Ingrese la contraseña: ");
-        String telefono = valTexto.validarTextoNoVacio("Ingrese el teléfono: ");
+        String telefono = String.valueOf(valNum.validarEnteroGrande("Ingrese el telefono: "));
 
         personaDao.crear(new Persona(nombre, identificacion, correo, contraseña, telefono));
     }
@@ -42,7 +42,7 @@ public class PersonaController {
         Persona persona = personaDao.buscar(id);
 
         if (persona == null) {
-            System.out.println("No se encontró ninguna persona con ese ID.");
+            System.out.println("No se encontro ninguna persona con ese ID.");
             return;
         }
 
@@ -50,25 +50,25 @@ public class PersonaController {
         do {
             opcionActualizacion = valNum.validarEntero("""
                                                     
-                                                    --- SUBMENÚ: ¿QUÉ DESEA ACTUALIZAR? ---
+                                                    --- SUBMENU: QUE DESEA ACTUALIZAR? ---
                                                     1. Nombre
-                                                    2. Identificación
+                                                    2. Identificacion
                                                     3. Correo
                                                     4. Contraseña
-                                                    5. Teléfono
-                                                    6. Regresar al menú anterior
-                                                    Seleccione una opción: """);
+                                                    5. Telefono
+                                                    6. Regresar al menu anterior
+                                                    Seleccione una opcion: """);
             switch (opcionActualizacion) {
                 case 1 -> {
                     persona.setNombre(valTexto.validarTextoNoVacio("Ingrese el nuevo nombre: "));
                     personaDao.actualizar(persona);
                 }
                 case 2 -> {
-                    persona.setIdentificacion(valTexto.validarTextoNoVacio("Ingrese la nueva identificación: "));
+                    persona.setIdentificacion(String.valueOf(valNum.validarEnteroGrande("Ingrese la nueva identificacion: ")));
                     personaDao.actualizar(persona);
                 }
                 case 3 -> {
-                    persona.setCorreo(valTexto.validarTextoNoVacio("Ingrese el nuevo correo: "));
+                    persona.setCorreo(valTexto.validarCorreo("Ingrese el nuevo correo electronico: "));
                     personaDao.actualizar(persona);
                 }
                 case 4 -> {
@@ -76,11 +76,11 @@ public class PersonaController {
                     personaDao.actualizar(persona);
                 }
                 case 5 -> {
-                    persona.setTelefono(valTexto.validarTextoNoVacio("Ingrese el nuevo teléfono: "));
+                    persona.setTelefono(String.valueOf(valNum.validarEnteroGrande("Ingrese el nuevo telefono: ")));
                     personaDao.actualizar(persona);
                 }
-                case 6 -> System.out.println("Regresando al menú de personas...");
-                default -> System.out.println("Opción no válida.");
+                case 6 -> System.out.println("Regresando al menu de personas...");
+                default -> System.out.println("Opcion no valida.");
             }
         } while (opcionActualizacion != 6);
     }
