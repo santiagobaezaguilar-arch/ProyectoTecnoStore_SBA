@@ -102,7 +102,8 @@ public class MenuSecundario {
                         // Aca evaluamos que reporte quiere ver el papulin con otro switch bien armado, chiclebomba
                         switch (opcionReporte) {
                             // Opcion 1: Mostramos celulares con stock menor o igual a 5 usando Stream API, gg ez
-                            case 1 -> reporteController.mostrarCelularesStockBajo();
+                            case 1 -> { auditoriaArchivo.registrarAccion("Sistema", "STOCK", "Se listaron los celulares con Stock bajo");
+                                        reporteController.mostrarCelularesStockBajo();}
                             // Opcion 2: Sacamos el top 3 de los mas vendidos desde la BD con agrupaciones, asi bien pro
                             case 2 -> reporteController.mostrarTop3MasVendidos(new java.util.ArrayList<>());
                             // Opcion 3: Agrupamos las ventas totales por mes con la Stream API, pa q amarre re bien
@@ -118,7 +119,7 @@ public class MenuSecundario {
                             case 6 -> reporteController.mostrarHistorialAuditoriaOrdenado();
                             // Opcion 7: Pedimos un tipo de accion (como LOGIN o VENTA) y filtramos la auditoria, piolin
                             case 7 -> {
-                                System.out.println("Tipos comunes registrados: LOGIN, VENTA, REGISTRO_CLIENTE, ACCESO_MENU");
+                                System.out.println("Tipos comunes registrados: LOGIN, VENTA, REGISTRO_CLIENTE, ACCESO_MENU, STOCK");
                                 String tipo = new view.validarTexto.Validaciones().validarTextoNoVacio("Ingrese el tipo de acción a buscar: ");
                                 reporteController.mostrarAuditoriaPorTipo(tipo);
                             }
