@@ -101,9 +101,9 @@ public class MenuSecundario {
                                                           
                         // Aca evaluamos que reporte quiere ver el papulin con otro switch bien armado, chiclebomba
                         switch (opcionReporte) {
-                            // Opcion 1: Mostramos celulares con stock menor o igual a 5 usando Stream API, gg ez
+             // Opcion 1: Mostramos celulares con stock menor o igual a 5 usando Stream API y se guarda en el archivo de historial de acciones, asi bien gg ez
                             case 1 -> { auditoriaArchivo.registrarAccion("Sistema", "STOCK", "Se listaron los celulares con Stock bajo");
-                                        reporteController.mostrarCelularesStockBajo();}
+                                        reporteController.mostrarCelularesStockBajo();}//que significa el bro respeta
                             // Opcion 2: Sacamos el top 3 de los mas vendidos desde la BD con agrupaciones, asi bien pro
                             case 2 -> reporteController.mostrarTop3MasVendidos(new java.util.ArrayList<>());
                             // Opcion 3: Agrupamos las ventas totales por mes con la Stream API, pa q amarre re bien

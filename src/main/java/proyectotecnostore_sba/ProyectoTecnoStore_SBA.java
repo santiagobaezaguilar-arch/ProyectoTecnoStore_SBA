@@ -9,5 +9,5 @@ public class ProyectoTecnoStore_SBA {
         MenuLogueo menu = new MenuLogueo();
         menu.mostrarMenu();
     }
-    
+    //examen menu secundario linea 105 y 106 y la linea 122
 }
